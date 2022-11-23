@@ -1,0 +1,19 @@
+{
+  "name": "service-worker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sw.js",
+  "scripts": {
+    "dev": "concurrently --kill-others \"npm run main\" \"npm run sub\"",
+    "main": "live-server --entry-file=index.html --host=localhost --port=8080",
+    "sub": "cd sub && live-server --entry-file=index.html --host=127.0.0.1 --port=9090 --no-browser"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ts-node": "^10.9.1"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}

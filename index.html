@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<script>
+  window.addEventListener('message', function() {
+    debugger;
+  });
+
+  var swRegistration = null;
+
+  console.log('About to try to install a Service Worker');
+  navigator.serviceWorker.register('sw.js', { scope: "/"})
+    .then(function(serviceWorker) {
+      swRegistration = serviceWorker;
+      console.log('Successfully installed ServiceWorker');
+      serviceWorker.addEventListener('statechange', function(event) {
+        console.log("Worker state is now "+event.target.state);
+      });
+      serviceWorker.addEventListener('fetch', (event) => {
+        console.log("fetch resource", event)
+      })
+    }, function(why) {
+      console.log('Failed to install:' + why);
+    });
+</script>
+
+<div style="max-width: 700px; margin: 0 auto 0 auto;">
+    <button id="fetchTest">Fetch Test</button>
+    <div id="js-log" style="height: 400px; overflow: scroll; color: white; background: black; font-family: monospace; line-height: 150%; font-size: 12px; padding: 7px;"></div>
+    <h1>iFrame with different Origin <i>(127.0.0.1)</i></h1>
+    <iframe src="http://127.0.0.1:9090" onload="onIframeLoad()"></iframe>
+    <h1>iFrame with same Origin <i>(localhost)<i/></h1>
+    <iframe src="http://localhost:8080/sub" onload="onIframeLoad()"></iframe>
+</div>
+<script src="log.js"></script>
+<script>
+  function onIframeLoad() {
+    console.log("iframe loaded for 127")
+  }
+
+  document.getElementById('fetchTest').addEventListener('click', async () => {
+    log('Fetch from Test-Api from local website');
+    const data = await fetch("https://meowfacts.herokuapp.com");
+    if (!data.ok){
+      log('fetch failed');
+    }
+    log('fetch locally successful');
+  });
+</script>
+</body>
+</html>
