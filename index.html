@@ -5,43 +5,26 @@
 <body>
 
 <script>
-  window.addEventListener('message', function (e) {
-    console.log(e.data["twttr.embed"])
-  });
-
   var swRegistration = null;
 
   console.log('About to try to install a Service Worker');
-  navigator.serviceWorker.register('sw.js', {scope: "/"})
+  navigator.serviceWorker.register('sw.js', {scope: "./"})
     .then(function (serviceWorker) {
       swRegistration = serviceWorker;
       console.log('Successfully installed ServiceWorker');
-      serviceWorker.addEventListener('statechange', function (event) {
-        console.log("Worker state is now " + event.target.state);
+      serviceWorker.addEventListener('statechange', function(event) {
+        console.log("Worker state is now "+event.target.state);
       });
       serviceWorker.addEventListener('fetch', (event) => {
         console.log("fetch resource", event)
       })
+      console.log("active: ",swRegistration.active);
     }, function (why) {
       console.log('Failed to install:' + why);
     });
 </script>
 
 <div style="max-width: 700px; margin: 0 auto 0 auto;">
-    <button id="fetchTest">Fetch Test</button>
-    <div id="js-log"
-         style="height: 200px; overflow: scroll; color: white; background: black; font-family: monospace; line-height: 150%; font-size: 12px; padding: 7px;"></div>
-    <div style="display: flex">
-        <div>
-            <h1>iFrame with different Origin <i>(127.0.0.1)</i></h1>
-            <iframe src="http://127.0.0.1:9090" onload="onIframeLoad()" height="50px"></iframe>
-        </div>
-        <div>
-            <h1>iFrame with same Origin <i>(localhost)<i/></h1>
-            <iframe src="http://localhost:8080/sub" onload="onIframeLoad()" height="50px"></iframe>
-        </div>
-    </div>
-
     <h1>Twitter iFrame embed test</h1>
     <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Looking for CMS recommendations:<br><br>- Good TypeScript
         support<br>- Queryable from Edge runtime<br><br>Any suggestions?</p>&mdash; Sam Selikoff (@samselikoff) <a
@@ -49,19 +32,19 @@
     </blockquote>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
-<script src="log.js"></script>
+
 <script>
-  function onIframeLoad() {
-    console.log("iframe loaded for 127")
-  }
-  log('TwitterId: 1595137918448054272')
-  document.getElementById('fetchTest').addEventListener('click', async () => {
-    log('Fetch from Test-Api from local website');
-    const data = await fetch("https://meowfacts.herokuapp.com");
-    if (!data.ok) {
-      log('fetch failed');
+  addEventListener('message', (e) => {
+    console.log(e.data["twttr.embed"]);
+    if (e.data["twttr.embed"]?.id === "twitter-widget-0") {
+      console.log("clients:", self.clients)
+      self.clients?.matchAll().then(function (clients) {
+        console.log("clients: ", clients);
+        clients.forEach(function (client) {
+          console.log("concrete client:", client);
+        });
+      });
     }
-    log('fetch locally successful');
   });
 </script>
 </body>
