@@ -24,15 +24,27 @@ self.addEventListener('fetch', function (e)  {
     e.respondWith(fetch("/widget.js"));
   }
 
+  if (e.request.url.toString().startsWith("http://localhost:8080/embed/")) {
+    console.log("#### HTML MATCH ###");
+    e.respondWith(fetch("/tweet.html"));
+  }
+
   if (e.request.url.match(/^http?:\/\/(localhost)(?::\d+)?\/widgets\/widget_iframe\.(.+)/i)) {
     console.log("#### widget iframe MATCH ###");
     e.respondWith(fetch("/widget_iframe.html"));
   }
 
-  if (e.request.url.toString().startsWith("https://platform.twitter.com/js/")) {
+  if (e.request.url.toString().startsWith("http://localhost:8080/js/")) {
     console.log("#### JS MATCH ###");
     e.respondWith(fetch("/tweet.js"));
   }
+
+  if (e.request.url.toString().startsWith("https://cdn.syndication.twimg.com/tweet-result")) {
+    console.log("#### tweet result MATCH ###");
+    e.respondWith(fetch("/tweet-result.json"));
+  }
+
+
 
 /*  if (!windowClientId || !iframeClientId) {
     return;

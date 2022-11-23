@@ -1,0 +1,38 @@
+{
+  "__typename": "Tweet",
+  "lang": "en",
+  "favorite_count": 238,
+  "created_at": "2022-11-22T19:31:30.000Z",
+  "display_text_range": [
+    0,
+    107
+  ],
+  "entities": {
+    "hashtags": [],
+    "urls": [],
+    "user_mentions": [],
+    "symbols": []
+  },
+  "id_str": "1595137918448054272",
+  "text": "CUSTOM Looking for CMS recommendations:\n\n- Good TypeScript support\n- Queryable from Edge runtime\n\nAny suggestions?",
+  "user": {
+    "id_str": "131941348",
+    "name": "Sam Selikoff",
+    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1301532598594928646/xBYs5HDf_normal.jpg",
+    "screen_name": "samselikoff",
+    "verified": false,
+    "is_blue_verified": true
+  },
+  "edit_control": {
+    "edit_tweet_ids": [
+      "1595137918448054272"
+    ],
+    "editable_until_msecs": "1669147290000",
+    "is_edit_eligible": true,
+    "edits_remaining": "5"
+  },
+  "conversation_count": 77,
+  "news_action_type": "conversation",
+  "isEdited": false,
+  "isStaleEdit": false
+}

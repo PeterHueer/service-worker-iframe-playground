@@ -155,7 +155,7 @@ Function && Function.prototype && Function.prototype.bind && (/(MSIE ([6789]|10|
   var r = n(11),
     i = /(?:^|(?:https?:)?\/\/(?:www\.)?twitter\.com(?::\d+)?(?:\/intent\/(?:follow|user)\/?\?screen_name=|(?:\/#!)?\/))@?([\w]+)(?:\?|&|$)/i,
     o = /(?:^|(?:https?:)?\/\/(?:www\.)?twitter\.com(?::\d+)?\/(?:#!\/)?[\w_]+\/status(?:es)?\/)(\d+)/i,
-    s = /^http(s?):\/\/(\w+\.)*twitter\.com([:/]|$)/i, a = /^http(s?):\/\/(ton|pbs)\.twimg\.com/,
+    s = /^http(s?):\/\/(\w+\.)*localhost(?::\d+)/i, a = /^http(s?):\/\/localhost:8080/,
     u = /^#?([^.,<>!\s/#\-()'"]+)$/, c = /twitter\.com(?::\d{2,4})?\/intent\/(\w+)/,
     d = /^https?:\/\/(?:www\.)?twitter\.com\/\w+\/timelines\/(\d+)/i,
     f = /^https?:\/\/(?:www\.)?twitter\.com\/i\/moments\/(\d+)/i,

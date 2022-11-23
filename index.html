@@ -45,17 +45,6 @@
 <script src="log.js"></script>
 
 <script>
-  log('TwitterId: 1595137918448054272')
-  document.getElementById('fetchTest').addEventListener('click', async () => {
-    log('Fetch from Test-Api from local website');
-    const data = await fetch("https://meowfacts.herokuapp.com");
-    if (!data.ok) {
-      log('fetch failed');
-    }
-    log('fetch locally successful');
-  });
-</script>
-<script>
   addEventListener('message', (e) => {
     console.log(e.data["twttr.embed"]);
     if (e.data["twttr.embed"]?.id === "twitter-widget-0") {
