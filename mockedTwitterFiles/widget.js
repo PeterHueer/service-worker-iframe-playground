@@ -155,14 +155,14 @@ Function && Function.prototype && Function.prototype.bind && (/(MSIE ([6789]|10|
   var r = n(11),
     i = /(?:^|(?:https?:)?\/\/(?:www\.)?twitter\.com(?::\d+)?(?:\/intent\/(?:follow|user)\/?\?screen_name=|(?:\/#!)?\/))@?([\w]+)(?:\?|&|$)/i,
     o = /(?:^|(?:https?:)?\/\/(?:www\.)?twitter\.com(?::\d+)?\/(?:#!\/)?[\w_]+\/status(?:es)?\/)(\d+)/i,
-    s = /^http(s?):\/\/(\w+\.)*localhost(?::\d+)/i, a = /^http(s?):\/\/localhost:8080/,
+    s = /^http(s?):\/\/(\w+\.)*.*(?::\d+)/i, a = /^http(s?):\/\/.*:8080/,
     u = /^#?([^.,<>!\s/#\-()'"]+)$/, c = /twitter\.com(?::\d{2,4})?\/intent\/(\w+)/,
     d = /^https?:\/\/(?:www\.)?twitter\.com\/\w+\/timelines\/(\d+)/i,
     f = /^https?:\/\/(?:www\.)?twitter\.com\/i\/moments\/(\d+)/i,
     l = /^https?:\/\/(?:www\.)?twitter\.com\/(\w+)\/(?:likes|favorites)/i,
     h = /^https?:\/\/(?:www\.)?twitter\.com\/(\w+)\/lists\/([\w-%]+)/i,
     p = /^https?:\/\/(?:www\.)?twitter\.com\/i\/live\/(\d+)/i, m = /^https?:\/\/syndication\.twitter\.com\/settings/i,
-    v = /^http?:\/\/(localhost)(?::\d+)?\/widgets\/widget_iframe\.(.+)/i,
+    v = /^http?:\/\/(.*)(?::\d+)?\/widgets\/widget_iframe\.(.+)/i,
     g = /^https?:\/\/(?:www\.)?twitter\.com\/search\?q=(\w+)/i;
 
   function w(t) {
@@ -1702,7 +1702,7 @@ Function && Function.prototype && Function.prototype.bind && (/(MSIE ([6789]|10|
     followButtonHtmlPath: "/widgets/follow_button.644279d1635fd969e87af94a98bd232b.{{lang}}.html",
     hubHtmlPath: "/widgets/hub.html",
     widgetIframeHtmlPath: "/widgets/widget_iframe.644279d1635fd969e87af94a98bd232b.html",
-    resourceBaseUrl: "http://localhost:8080"
+    resourceBaseUrl: location.href
   }
 }, function (t) {
   t.exports = {TWEET: 0, RETWEET: 10, CUSTOM_TIMELINE: 17, LIVE_VIDEO_EVENT: 28, QUOTE_TWEET: 23}
