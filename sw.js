@@ -21,37 +21,27 @@ self.addEventListener('fetch', function (e)  {
 
   if (e.request.url === ("https://platform.twitter.com/widgets.js")) {
     console.log("#### WIDGET MATCH ###");
-    e.respondWith(fetch("/widget.js"));
+    e.respondWith(fetch("/mockedTwitterFiles/widget.js"));
   }
 
-  if (e.request.url.toString().startsWith("http://localhost:8080/embed/")) {
-    console.log("#### HTML MATCH ###");
-    e.respondWith(fetch("/tweet.html"));
+  if (e.request.url.match(/^http?:\/\/(.*)(?::\d+)?\/embed/i)) {
+    console.log("#### TWEET-HTML MATCH ###");
+    e.respondWith(fetch("/mockedTwitterFiles/tweet.html"));
   }
 
-  if (e.request.url.match(/^http?:\/\/(localhost)(?::\d+)?\/widgets\/widget_iframe\.(.+)/i)) {
-    console.log("#### widget iframe MATCH ###");
-    e.respondWith(fetch("/widget_iframe.html"));
+  if (e.request.url.match(/^http?:\/\/(.*)(?::\d+)?\/widgets\/widget_iframe\.(.+)/i)) {
+    console.log("#### WIDGET_IFRAME MATCH ###");
+    e.respondWith(fetch("/mockedTwitterFiles/widget_iframe.html"));
   }
 
-  if (e.request.url.toString().startsWith("http://localhost:8080/js/")) {
-    console.log("#### JS MATCH ###");
-    e.respondWith(fetch("/tweet.js"));
+  if (e.request.url.match(/^http?:\/\/(.*)(?::\d+)?\/js/i)) {
+    console.log("#### TWEET-JS MATCH ###");
+    e.respondWith(fetch("/mockedTwitterFiles/tweet.js"));
   }
 
   if (e.request.url.toString().startsWith("https://cdn.syndication.twimg.com/tweet-result")) {
-    console.log("#### tweet result MATCH ###");
-    e.respondWith(fetch("/tweet-result.json"));
+    console.log("#### TWEET-RESULT MATCH ###");
+    e.respondWith(fetch("/mockedTwitterFiles/tweet-result.json"));
   }
-
-
-
-/*  if (!windowClientId || !iframeClientId) {
-    return;
-  }
-  // Don't process main window resources
-  if (e.clientId === windowClientId) {
-    return;
-  }*/
 
 });

@@ -4,9 +4,7 @@
   "description": "",
   "main": "sw.js",
   "scripts": {
-    "dev": "concurrently --kill-others \"npm run main\" \"npm run sub\"",
-    "main": "live-server --entry-file=index.html --host=localhost --port=8080",
-    "sub": "cd sub && live-server --entry-file=index.html --host=127.0.0.1 --port=9090 --no-browser"
+    "dev": "live-server"
   },
   "author": "",
   "license": "ISC",

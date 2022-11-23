@@ -23,16 +23,6 @@
       console.log('Failed to install:' + why);
     });
 </script>
-<script>
-  addEventListener('fetch', (e) => {
-    console.log("fetching", e.request.url)
-  });
-</script>
-<script>
-  function onIframeLoad() {
-    console.log("iframe loaded for 127")
-  }
-</script>
 
 <div style="max-width: 700px; margin: 0 auto 0 auto;">
     <h1>Twitter iFrame embed test</h1>
@@ -42,7 +32,6 @@
     </blockquote>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
-<script src="log.js"></script>
 
 <script>
   addEventListener('message', (e) => {
@@ -53,11 +42,6 @@
         console.log("clients: ", clients);
         clients.forEach(function (client) {
           console.log("concrete client:", client);
-          if (client.frameType === "top-level") {
-            windowClientId = client.id
-          } else if (client.frameType === "nested") {
-            iframeClientId = client.id
-          }
         });
       });
     }
