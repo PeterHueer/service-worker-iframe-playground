@@ -362,7 +362,7 @@ Function && Function.prototype && Function.prototype.bind && (/(MSIE ([6789]|10|
     }, decode: u, encode: a, encodePart: o, decodePart: s
   }
 }, function (t, e, n) {
-  var r = n(8), i = n(38), o = "https://syndication.twitter.com", s = "http://localhost:8080",
+  var r = n(8), i = n(38), o = "https://syndication.twitter.com", s = location.href,
     a = ["https://syndication.twitter.com", "https://cdn.syndication.twimg.com", "https://localhost.twitter.com:8444"],
     u = ["https://syndication.twitter.com", "https://localhost.twitter.com:8445"],
     c = ["http://localhost:8080", "https://localhost.twitter.com", /^https:\/\/ton\.smf1\.twitter\.com\/syndication-internal\/embed-iframe\/[0-9A-Za-z_-]+\/app/],
